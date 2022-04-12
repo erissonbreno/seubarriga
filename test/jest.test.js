@@ -10,4 +10,4 @@ test('Devo conhecer as principais assertivas do jest', () => {
 test('Devo saber trabalhar com objetos', () => {
   const obj = { name: 'John', mail: 'john@mail.com' };
   expect(obj).toHaveProperty('name', 'John');
-})
+});
