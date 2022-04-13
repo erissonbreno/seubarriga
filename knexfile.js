@@ -1,5 +1,5 @@
 module.exports = {
-  test: {
+  testing: {
     client: 'pg',
     version: '9.6',
     connection: {

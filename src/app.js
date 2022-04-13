@@ -5,7 +5,7 @@ const knexfile = require('../knexfile');
 // const knexlogger = require('knex-logger');
 
 // TODO Criar chaveamento dinâmico
-app.db = knex(knexfile.test);
+app.db = knex(knexfile.testing);
 
 // app.use(knexlogger(app.db));
 

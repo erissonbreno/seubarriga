@@ -1,6 +1,6 @@
 module.exports = (app) => {
   const findAll = (filter = {}) => {
-    app.db('users').where(filter).select();
+    return app.db('users').where(filter).select();
   };
 
   const save = async (user) => {
@@ -11,7 +11,7 @@ module.exports = (app) => {
     const userDb = await findAll({ mail: user.mail })
 
     if (userDb && userDb.length > 0) {
-      return { error: 'Já existe um usário com esse email' }
+      return { error: 'Já existe um usuário com esse email' }
     }
 
     return app.db('users').insert(user, '*');
