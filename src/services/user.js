@@ -14,8 +14,7 @@ module.exports = (app) => {
   const getPasswdHash = (passwd) => {
     const salt = bcrypt.genSaltSync(10);
     return bcrypt.hashSync(passwd, salt);
-
-  }
+  };
 
   const save = async (user) => {
     if (!user.name) throw new ValidationError('Nome é um atributo obrigatório');
@@ -28,7 +27,7 @@ module.exports = (app) => {
       throw new ValidationError('Já existe um usuário com esse email');
     }
 
-    const newUser = { ...user }
+    const newUser = { ...user };
     newUser.passwd = getPasswdHash(user.passwd);
     return app.db('users').insert(newUser, ['id', 'name', 'mail']);
   };
