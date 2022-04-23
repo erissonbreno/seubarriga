@@ -106,7 +106,16 @@ test('Deve listar apenas as contas do usuario', () => {
     }));
 });
 
-test.skip('Nao deve retornar uma conta de outro usuário', () => { });
+test('Nao deve retornar uma conta de outro usuário', () => {
+  return app.db('accounts')
+    .insert({ name: 'Acc User #2', user_id: user2.id }, ['id'])
+    .then(acc => request(app).get(`${MAIN_ROUTE}/${acc[0].id}`)
+      .set('authorization', `bearer ${user.token}`))
+    .then(res => {
+      expect(res.status).toBe(403);
+      expect(res.body.error).toBe('Este recurso não pertence ao usuário')
+    });
+});
 
 test.skip('Nao deve alterar uma conta de outro usuário', () => { });
 
