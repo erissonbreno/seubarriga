@@ -1,0 +1,3 @@
+Curso de criação de uma API REST em NodeJS aplicando TDD desde o princípio
+
+Criação da API de um gerenciador financeiro onde, no lado dos testes, é apresentado diversos recursos do Jest para fazer assertivas e estruturar os testes. Já no lado do desenvolvimento, foi trabalhada várias bibliotecas famosas como o Express para criar o nosso servidor, o Passport e JWT para autenticação, Knex e Postgres para migração e consultas ao banco de dados, além de outras.
