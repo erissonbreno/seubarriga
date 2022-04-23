@@ -82,7 +82,16 @@ test('Deve remover uma conta', () => {
     });
 });
 
-test.skip('Nao deve inserir uma conta de nome duplicado, para o mesmo usuario', () => { });
+test('Nao deve inserir uma conta de nome duplicado, para o mesmo usuario', () => {
+  return app.db('accounts').insert({ name: 'Acc duplicada', user_id: user.id })
+    .then(() => request(app).post(MAIN_ROUTE)
+      .set('authorization', `bearer ${user.token}`)
+      .send({ name: 'Acc duplicada' }))
+    .then(res => {
+      expect(res.status).toBe(400);
+      expect(res.body.error).toBe('Já existe uma conta com esse nome')
+    })
+});
 
 test('Deve listar apenas as contas do usuario', () => {
   return app.db('accounts').insert([
